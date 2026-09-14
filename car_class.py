@@ -27,13 +27,20 @@ class Battery:
         self.batterySize = batterySize
     def describe_battery(self):
         print(f"{self.batterySize} watts is the current size of te battery")
+    def get_range(self):
+        range = 0
+        if self.batterySize == 40:
+            range = 150
+        elif self.batterySize > 500:
+            range = 300
+        return (f"{range} is the range")
+        
 class ElectricCar(Car):
     def __init__(self,make,model,year):
         super().__init__(make,model,year)
 
         self.battery = Battery()
         
-
 new_ccar= Car("Audi","a4",2026)
 
 print(new_ccar.descriptive_name())
@@ -42,6 +49,7 @@ my_leaf = ElectricCar("nissin","leaf",2024)
 
 print(my_leaf.descriptive_name())
 my_leaf.battery.describe_battery()
+print(my_leaf.battery.get_range())
 
 new_ccar.update_odometer(300)
 new_ccar.update_odometer(30)
